@@ -25,3 +25,12 @@
 | macros                 | §19.6               |
 | clippy                 | §21.4               |
 | conversions            | n/a                 |
+
+freefilesync，syncthing，微力同步
+
+ZFile（仿alist），中小团队必备工具，开源网盘，基于 Java 的在线网盘程序，支持对接 S3、OneDrive、SharePoint、又拍云。
+
+goodsync，可道云（封闭），raidrive，群晖drive（synology，贵+体验差+限速），qsync（威联通nas），fileRun（风评好），seafile（风评好），resilio sync（全平台，极简）
+
+多人协作:etherpad实时同步word，FortuneSheet实时同步excel，onlyoffice从2009年开始做全套office实时同步
+

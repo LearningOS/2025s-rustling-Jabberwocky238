@@ -1,0 +1,1 @@
+Map<FilterMap<Map<std::vec::IntoIter<i32>, {closure@exercises/iterators/iterators3.rs:47:52: 47:55}>, {closure@exercises/iterators/iterators3.rs:49:21: 49:29}>, {closure@exercises/iterators/iterators3.rs:50:14: 50:22}>
