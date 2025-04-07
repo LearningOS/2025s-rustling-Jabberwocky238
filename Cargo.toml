@@ -187,6 +187,16 @@ bin = [
   { name = "try_from_into_sol", path = "solutions/conversions/try_from_into.rs" },
   { name = "as_ref_mut", path = "exercises/conversions/as_ref_mut.rs" },
   { name = "as_ref_mut_sol", path = "solutions/conversions/as_ref_mut.rs" },
+  { name = "algothrim1", path = "exercises/algorithm/algorithm1.rs" },
+  { name = "algothrim2", path = "exercises/algorithm/algorithm2.rs" },
+  { name = "algothrim3", path = "exercises/algorithm/algorithm3.rs" },
+  { name = "algothrim4", path = "exercises/algorithm/algorithm4.rs" },
+  { name = "algothrim5", path = "exercises/algorithm/algorithm5.rs" },
+  { name = "algothrim6", path = "exercises/algorithm/algorithm6.rs" },
+  { name = "algothrim7", path = "exercises/algorithm/algorithm7.rs" },
+  { name = "algothrim8", path = "exercises/algorithm/algorithm8.rs" },
+  { name = "algothrim9", path = "exercises/algorithm/algorithm9.rs" },
+  { name = "algothrim10", path = "exercises/algorithm/algorithm10.rs" },
 ]
 
 [package]

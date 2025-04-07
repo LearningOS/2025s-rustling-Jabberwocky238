@@ -1,8 +1,7 @@
 /*
-	heap
-	This question requires you to implement a binary heap function
+    heap
+    This question requires you to implement a binary heap function
 */
-// I AM NOT DONE
 
 use std::cmp::Ord;
 use std::default::Default;
@@ -38,6 +37,38 @@ where
 
     pub fn add(&mut self, value: T) {
         //TODO
+        self.count += 1;
+        if self.count >= self.items.len() {
+            self.items.push(T::default());
+        }
+        self.items[self.count] = value;
+        self.sift_up(self.count);
+    }
+
+    fn sift_up(&mut self, idx: usize) {
+        let mut current = idx;
+        while current > 1 {
+            let parent = self.parent_idx(current);
+            if (self.comparator)(&self.items[current], &self.items[parent]) {
+                self.items.swap(current, parent);
+                current = parent;
+            } else {
+                break;
+            }
+        }
+    }
+
+    fn sift_down(&mut self, idx: usize) {
+        let mut current = idx;
+        while self.children_present(current) {
+            let smallest_child: usize = self.smallest_child_idx(current);
+            if (self.comparator)(&self.items[smallest_child], &self.items[current]) {
+                self.items.swap(current, smallest_child);
+                current = smallest_child;
+            } else {
+                break;
+            }
+        }
     }
 
     fn parent_idx(&self, idx: usize) -> usize {
@@ -58,7 +89,16 @@ where
 
     fn smallest_child_idx(&self, idx: usize) -> usize {
         //TODO
-		0
+        let left = self.left_child_idx(idx);
+        let right = self.right_child_idx(idx);
+        if right > self.count {
+            return left;
+        }
+        if (self.comparator)(&self.items[left], &self.items[right]) {
+            left
+        } else {
+            right
+        }
     }
 }
 
@@ -85,7 +125,14 @@ where
 
     fn next(&mut self) -> Option<T> {
         //TODO
-		None
+        if self.is_empty() {
+            return None;
+        }
+        self.items.swap(1, self.count);
+        let root = std::mem::replace(&mut self.items[self.count], T::default());
+        self.count -= 1;
+        self.sift_down(1);
+        Some(root)
     }
 }
 

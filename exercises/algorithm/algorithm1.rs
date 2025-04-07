@@ -2,7 +2,6 @@
     single linked list merge
     This problem requires you to merge two ordered singly linked lists into one ordered singly linked list
 */
-// I AM NOT DONE
 
 use std::fmt::{self, Display, Formatter};
 use std::ptr::NonNull;
@@ -26,13 +25,19 @@ struct LinkedList<T> {
     end: Option<NonNull<Node<T>>>,
 }
 
-impl<T> Default for LinkedList<T> {
+impl<T> Default for LinkedList<T>
+where
+    T: Ord + Clone,
+{
     fn default() -> Self {
         Self::new()
     }
 }
 
-impl<T> LinkedList<T> {
+impl<T> LinkedList<T>
+where
+    T: Ord + Clone,
+{
     pub fn new() -> Self {
         Self {
             length: 0,
@@ -67,12 +72,31 @@ impl<T> LinkedList<T> {
         }
     }
     pub fn merge(list_a: LinkedList<T>, list_b: LinkedList<T>) -> Self {
-        //TODO
-        Self {
-            length: 0,
-            start: None,
-            end: None,
+        if list_a.length == 0 {
+            return list_b;
         }
+        if list_b.length == 0 {
+            return list_a;
+        }
+        let mut ret = vec![];
+        let mut a = list_a.start;
+        let mut b = list_b.start;
+        while let Some(a_ptr) = a {
+            let a_val = unsafe { a_ptr.read() };
+            ret.push(a_val.val);
+            a = unsafe { a_ptr.read().next };
+        }
+        while let Some(b_ptr) = b {
+            let b_val = unsafe { b_ptr.read() };
+            ret.push(b_val.val);
+            b = unsafe { b_ptr.read().next };
+        }
+        ret.sort();
+        let mut list_c = LinkedList::<T>::new();
+        for i in 0..ret.len() {
+            list_c.add(ret[i].clone());
+        }
+        list_c
     }
 }
 
